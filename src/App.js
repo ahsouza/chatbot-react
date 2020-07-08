@@ -6,7 +6,8 @@ import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Navlink from './components/Navlink'
-import Content from './components/MediaControlCard'
+//import Content from './components/MediaControlCard'
+import Profile from './components/Profile'
 
 class Review extends Component {
   constructor(props) {
@@ -20,16 +21,16 @@ class Review extends Component {
 
   componentWillMount() {
     const { steps } = this.props;
-    const { name,  age } = steps;
+    const { name,  contato } = steps;
 
-    this.setState({ name, age });
+    this.setState({ name, contato });
   }
 
   render() {
-    const { name, age } = this.state;
+    const { name, contato } = this.state;
     return (
       <div style={{ width: '100%' }}>
-        <h3>Summary</h3>
+        <h3>Solicitante:</h3>
         <table>
           <tbody>
             <tr>
@@ -37,8 +38,8 @@ class Review extends Component {
               <td>{name.value}</td>
             </tr>
             <tr>
-              <td>Idade:</td>
-              <td>{age.value}</td>
+              <td>Telefone:</td>
+              <td>{contato.value}</td>
             </tr>
           </tbody>
         </table>
@@ -57,10 +58,10 @@ Review.defaultProps = {
 
 const theme = {
   background: '#f5f8fb',
-  headerBgColor: '#7B1FA2',
+  headerBgColor: '#311B92',
   headerFontColor: '#fff',
   headerFontSize: '15px',
-  botBubbleColor: '#2196F3',
+  botBubbleColor: '#4527A0',
   botFontColor: '#fff',
   userBubbleColor: '#fff',
   userFontColor: '#4a4a4a',
@@ -72,18 +73,13 @@ function App() {
       <Navlink/>
 
       <header className="App-header">
-        <Content/>
-        <br/>
-        <br/>
-        <Button variant="contained" color="secondary">
-          Saiba Mais
-        </Button>
+        <Profile/>
 
       <ThemeProvider theme={theme}>
         <ChatBot
-          headerTitle="Argobô"
-          botAvatar="https://media-exp1.licdn.com/dms/image/C4E0BAQH8RNLNJSYaiQ/company-logo_200_200/0?e=1602115200&v=beta&t=PsGhg_ax2IU5kTqipNCg-h1g1KmV09qC5WO8A4JMVTs"
-          userAvatar="https://avatars0.githubusercontent.com/u/28975240?s=460&u=950a3722d69e077b7e4a9879fcaad2cfa28be3e7&v=4"
+          headerTitle="Anibôt"
+          botAvatar="https://avatars0.githubusercontent.com/u/28975240?s=460&u=950a3722d69e077b7e4a9879fcaad2cfa28be3e7&v=4"
+          userAvatar="https://material-ui.com/static/images/avatar/3.jpg"
           enableSmoothScrol={true}
           floating={true}
           speechSynthesis={{ enable: false, lang: 'pt', voice: null }}
@@ -106,11 +102,11 @@ function App() {
     },
     {
       id: '4',
-      message: 'Qual é sua idade?',
-      trigger: 'age',
+      message: 'Me fale seu número de contato?',
+      trigger: 'contato',
     },
     {
-      id: 'age',
+      id: 'contato',
       user: true,
       trigger: '6',
       validator: (value) => {
@@ -118,15 +114,13 @@ function App() {
           return 'value must be a number';
         } else if (value < 0) {
           return 'value must be positive';
-        } else if (value > 120) {
-          return `${value}? Come on!`;
         }
         return true;
       },
     },
     {
       id: '6',
-      message: 'Esta é sua avaliação de risco',
+      message: 'Ok!',
       trigger: 'review',
     },
     {
@@ -156,7 +150,7 @@ function App() {
       id: 'update-fields',
       options: [
         { value: 'name', label: 'Nome', trigger: 'update-name' },
-        { value: 'age', label: 'Idade', trigger: 'update-age' },
+        { value: 'contato', label: 'Telefone', trigger: 'update-contato' },
       ],
     },
     {
@@ -165,13 +159,13 @@ function App() {
       trigger: '6',
     },
     {
-      id: 'update-age',
-      update: 'age',
+      id: 'update-contato',
+      update: 'contato',
       trigger: '6',
     },
     {
       id: 'end-message',
-      message: 'Obrigado! Seus dados foram salvos com sucesso!',
+      message: 'Obrigado! Seu pedido foi salvo com sucesso!',
       end: true,
     },
 

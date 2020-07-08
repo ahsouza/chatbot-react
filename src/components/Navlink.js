@@ -115,8 +115,10 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>GitHub</MenuItem>
+      <MenuItem onClick={handleMenuClose}>LinkedIn</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Behance</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Site</MenuItem>
     </Menu>
   );
 
@@ -174,7 +176,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Argo Crew
+            AHS
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

@@ -1,7 +1,12 @@
 {
-  "name": "argo-bot",
+  "name": "ahs-bot",
   "version": "0.0.1",
-  "homepage" : "http://ahsouza.github.io/argo-chatbot-react/" ,
+  "author": {
+    "name": "Aníbal Henrique De Souza",
+    "email": "annibalhsouza@gmail.com",
+    "url": "https://ahsouza.github.io/"
+  },
+  "homepage": "http://ahsouza.github.io/chatbot-react/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
